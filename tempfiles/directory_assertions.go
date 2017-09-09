@@ -2,19 +2,19 @@ package tempfiles
 
 import (
 	"testing"
-	"fmt"
 	"os"
+	"github.com/stretchr/testify/assert"
 )
 
 func (directory TestDirectory) ShouldExist(T *testing.T, args ...interface{}) {
 	if !pathExists(directory.Path()) {
-		T.Error(fmt.Sprintf("File %s should exist", directory), args)
+		assert.Fail(T, "Directory %s should exist", directory.Path(), args)
 	}
 }
 
 func (directory TestDirectory) ShouldNotExist(T *testing.T, args ...interface{}) {
 	if pathExists(directory.Path()) {
-		T.Error(fmt.Sprintf("File %s should not exist", directory), args)
+		assert.Fail(T, "Directory %s should not exist", directory.Path(), args)
 	}
 }
 
