@@ -5,17 +5,9 @@ import (
 	"io/ioutil"
 	"path/filepath"
 	"fmt"
-	"testing"
 )
 
 type TestDirectory string
-
-func (directory TestDirectory) ShouldHaveFile(T *testing.T, filename string, args ...interface{}) {
-	path := filepath.Join(string(directory), filename)
-	file := TestFile(path)
-
-	file.ShouldExist(T, args)
-}
 
 func (dir TestDirectory) Remove() {
 	err := os.RemoveAll(string(dir))
