@@ -18,7 +18,7 @@ func (assertion *FileAssertion) WithContent(expected []byte, args ...interface{}
 	}
 
 	content, _ := ioutil.ReadFile(assertion.file.Path())
-	assert.Equal(assertion.t, expected, content, args)
+	assert.Equal(assertion.t, string(expected), string(content), args...)
 }
 
 func (file TestFile) ShouldExist(T *testing.T, args ...interface{}) *FileAssertion {
