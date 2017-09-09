@@ -18,7 +18,7 @@ func TestRemovingFolderShouldAlsoRemoveTestfiles(T *testing.T) {
 	folder := NewDirectory()
 	file := folder.NewEmptyFile("Blob")
 	folder.Remove()
-	
+
 	if pathExists(string(file)) {
 		T.Error("File should not Exist")
 	}

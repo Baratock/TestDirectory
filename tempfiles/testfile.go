@@ -18,6 +18,7 @@ func (file TestFile) Path() string {
 
 func NewEmptyFile(path TestDirectory, name string) TestFile {
 	file, err :=os.Create(filepath.Join(path.Path(), name))
+	file.Close()
 
 	if err != nil {
 		panic(err)
