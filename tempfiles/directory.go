@@ -9,6 +9,12 @@ import (
 
 type TestDirectory string
 
+func (dir TestDirectory)GetSubDirectory(directories ...string) TestDirectory {
+	relativePath := filepath.Join(directories...)
+	path := filepath.Join(dir.Path(), relativePath)
+	return TestDirectory(path)
+}
+
 func (dir TestDirectory) Remove() {
 	err := os.RemoveAll(string(dir))
 	if err != nil {
